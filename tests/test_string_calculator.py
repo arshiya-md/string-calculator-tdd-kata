@@ -13,3 +13,6 @@ def test_single_number_returns_itself(calculator):
     
 def test_multiple_numbers_returns_sum(calculator):
     assert calculator.add("3, 1, 8, 5") == 17
+    
+def test_newlines_between_numbers(calculator):
+    assert calculator.add("15\n3,1") == 19
