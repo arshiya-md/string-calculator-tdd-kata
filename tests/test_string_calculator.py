@@ -20,6 +20,11 @@ def test_newlines_between_numbers(calculator):
 def test_different_delimiters(calculator):
     assert calculator.add("//*\n5*8") == 13
     
-def test_negative_numbers(calculator):
+def test_negative_number(calculator):
     with pytest.raises(ValueError, match="Negative numbers not allowed -5"):
         calculator.add("//#\n-5#10")
+
+def test_multiple_negative_numbers(calculator):
+    with pytest.raises(ValueError, match="Negative numbers not allowed -5, -10"):
+        calculator.add("//#\n-5#-10")
+        
