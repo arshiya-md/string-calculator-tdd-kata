@@ -10,3 +10,6 @@ def test_empty_string_returns_zero(calculator):
     
 def test_single_number_returns_itself(calculator):
     assert calculator.add("3") == 3
+    
+def test_multiple_numbers_returns_sum(calculator):
+    assert calculator.add("3, 1, 8, 5") == 17
