@@ -16,3 +16,6 @@ def test_multiple_numbers_returns_sum(calculator):
     
 def test_newlines_between_numbers(calculator):
     assert calculator.add("15\n3,1") == 19
+
+def test_different_delimiters(calculator):
+    assert calculator.add("//*\n5*8") == 13
