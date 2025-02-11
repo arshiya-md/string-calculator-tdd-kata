@@ -9,8 +9,9 @@ class StringCalculator:
             delimiter = ","
         splitted_numbers = list(map(int, numbers.replace("\n", ",").split(delimiter)))
         negatives = [num for num in splitted_numbers if num < 0]
+        numbers_upto_1000 = [num for num in splitted_numbers if num <= 1000]
         
         if negatives:
             raise ValueError(f"Negative numbers not allowed {', '.join(map(str, negatives))}")
         
-        return sum(splitted_numbers)
+        return sum(numbers_upto_1000)
