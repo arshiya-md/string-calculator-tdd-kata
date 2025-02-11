@@ -30,4 +30,6 @@ def test_multiple_negative_numbers(calculator):
 
 def test_ignore_numbers_greater_than_1000(calculator):
     assert calculator.add("1001, 1") == 1
-        
+
+def test_delimiter_of_any_lenght(calculator):
+    assert calculator.add("//[;;]\n1;;3;;5") == 9       
