@@ -27,4 +27,7 @@ def test_negative_number(calculator):
 def test_multiple_negative_numbers(calculator):
     with pytest.raises(ValueError, match="Negative numbers not allowed -5, -10"):
         calculator.add("//#\n-5#-10")
+
+def test_ignore_numbers_greater_than_1000(calculator):
+    assert calculator.add("1001, 1") == 1
         
