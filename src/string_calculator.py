@@ -3,8 +3,8 @@ class StringCalculator:
         if not numbers:
             return 0
         if numbers.startswith("//"):
-            delimiter = numbers[2:3]
-            numbers = numbers[4:]
+            delimiter = numbers[3:numbers.index(']')]
+            numbers = numbers[numbers.index('\n') + 1:]
         else:
             delimiter = ","
         splitted_numbers = list(map(int, numbers.replace("\n", ",").split(delimiter)))
