@@ -32,4 +32,7 @@ def test_ignore_numbers_greater_than_1000(calculator):
     assert calculator.add("1001, 1") == 1
 
 def test_delimiter_of_any_lenght(calculator):
-    assert calculator.add("//[;;]\n1;;3;;5") == 9       
+    assert calculator.add("//[;;]\n1;;3;;5") == 9
+    
+def test_multiple_one_char_delimiters(calculator):
+    assert calculator.add("//[@][.]\n9.5@8") == 22
