@@ -1,24 +1,32 @@
 import re
 
-
-class StringCalculator:
-    def add(self, numbers: str) -> int:
+def extract_numbers(func):
+    
+    def wrapper(self, numbers):
         if not numbers:
-            return 0
+            return func(self, [0])
         
-        # If custom delimiters are provided, extract and process them
+        # If custom delimiters are provided, extract and process them       
         if numbers.startswith("//"):
             delimiter_part, numbers = numbers.split("\n", 1)
             delimiters = re.findall(r"\[(.*?)\]", delimiter_part)
             if not delimiters:
-                delimiters = [delimiter_part[2:]]  # Extract the single delimiter
+                delimiters = [delimiter_part[2:]]  # Extract single character delimiter
+            
             for delim in delimiters:
                 numbers = numbers.replace(delim, ",")
         else:
-            # Use a comma to split numbers when no custom delimiters are given
             numbers = numbers.replace("\n", ",")
             
-        numbers_list = list(map(int, numbers.split(',')))
+        numbers_list = list(map(int, numbers.split(',')))        
+        return func(self, numbers_list)
+    
+    return wrapper
+
+class StringCalculator:
+    
+    @extract_numbers
+    def add(self, numbers_list: list[int]) -> int:
         
         negatives = []
         numbers_upto_1000 = []
